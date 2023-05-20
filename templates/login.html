@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <!-- Add your company logo here -->
+        <div class="logo-container">
+            <div class="logobiglogin">Vectoro</div>
+        </div>
+        <h2>Login</h2>
+        <form class="login-form" method="post" action="/login">
+            <input class="login-input" type="text" name="email" placeholder="Email Address" required>
+            <input class="login-input" type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vectoro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+{% if user %}
+    <body>
+        <header>
+            <div class="logo-container">
+                <div class="logobig">Vectoro</div><div class="logosmall">Adding relevance to large language models since 2023</div>
+            </div>
+            <div class="user-container">
+                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Draw the circle -->
+                    <circle cx="25" cy="25" r="18" fill="white" stroke="white" stroke-width="2"/>
+                    <!-- Place the user emoji inside the circle -->
+                    <text x="25" y="30" text-anchor="middle" class="user-emoji">👤</text>
+                </svg>
+                <div class="dropdown">
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <aside class="sidebar">
+                <div class="sidebar-item">
+                    <span class="sidebar-icon">📁</span>
+                    <span class="sidebar-text">Project</span>
+                </div>
+                <div class="sidebar-item" id="indexes-item">
+                    <span class="sidebar-icon">📊</span>
+                    <span class="sidebar-text">Indexes</span>
+                </div>
+                <div class="sidebar-item">
+                    <span class="sidebar-icon">📚</span>
+                    <span class="sidebar-text">Collections</span>
+                </div>
+                <div class="sidebar-item">
+                    <span class="sidebar-icon">🔑</span>
+                    <span class="sidebar-text">API Keys</span>
+                </div>
+                <div class="sidebar-item">
+                    <span class="sidebar-icon">👥</span>
+                    <span class="sidebar-text">Collaborators</span>
+                </div>
+            </aside>
+            <main class="work-area" id="work-area">
+                <!-- Work area content goes here -->
+            </main>
+    
+            <script>
+                // Function to render the list of indexes in the work area
+                function renderIndexes(indexesData) {
+                    const workArea = document.getElementById('work-area');
+                    let content = '<ul class="indexes-list">';
+                    for (const index of indexesData) {
+                        content += `<li>${index}</li>`;
+                    }
+                    content += '</ul>';
+                    workArea.innerHTML = content;
+                }
+            
+                // Add click event listener to the "Indexes" sidebar item
+                const indexesItem = document.getElementById('indexes-item');
+                indexesItem.addEventListener('click', () => {
+                    // Fetch index data from the server
+                    fetch('/get_indexes')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                alert(data.error);
+                            } else {
+                                renderIndexes(data.indexes);
+                            }
+                        })
+                        .catch(error => console.error(error));
+                });
+            </script>
+        </div>
+    </body>
+{% else %}
+    <body class="login-body">
+        <div class="login-container">
+            <!-- Add your company logo here -->
+            <div class="logo-container">
+                <div class="logobiglogin">Vectoro</div>
+            </div>
+            <h2>Login</h2>
+            <form class="login-form" method="post" action="/login">
+                <input class="login-input" type="text" name="email" placeholder="Email Address" required>
+                <input class="login-input" type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/register">Register</a></p>
+        </div>
+    </body>
+{% endif %}
+</html>

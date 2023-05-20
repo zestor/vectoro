@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    height: 50px;
+    background-color: darkblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logobig {
+    font-family: Arial;
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+}
+
+.logobiglogin {
+    font-family: Arial;
+    font-size: 40px;
+    color: blue;
+    font-weight: bold;
+}
+
+.logosmall {
+    font-family: Arial;
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+.login-body {
+    background-color: #1a1a1a; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.login-container {
+    background-color: white; /* White login box */
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-form {
+    width: 80%;
+}
+.login-input {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.logo-container img,
+.user-container img {
+    height: 100px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    float: right;
+}
+
+.user-container {
+    position: relative;
+    float: right;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.user-container:hover .dropdown {
+    display: block;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 100px); /* Subtract the height of the header */
+}
+
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    }
+    
+.sidebar-icon {
+    margin-right: 10px;
+    }
+
+.work-area {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f0f0f0;
+    }
+    
+
